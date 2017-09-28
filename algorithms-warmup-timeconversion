@@ -12,25 +12,20 @@ public class Solution {
         
         String substr="PM";
         
-        //if given time is PM
+        //if the given time is PM:
         if (s.toLowerCase().contains(substr.toLowerCase())){
             if (s.substring(0,2).equals("12")){
                 //return same time without the string "PM"
-                
-                //System.out.println(s.substring(0,8));
-                
                 return s.substring(0,8);
             } else{
-                //add +12 hours by splitting s at the first occurence of :
+                //add 12 hours by spliting s at the first occurence of the string ":"
                 int militaryTime=Integer.parseInt(s.split(":")[0]);
                 militaryTime+=12;
-                
-                //System.out.println(militaryTime);
-                
-                //Strings are immutable but we can overwrite the first 2 characters
+             
+                //strings are immutable, but we can overwrite the first 2 characters
                 String military=Integer.toString(militaryTime);
-                s=military+s.substring(2,8); //***********************************index 7 doesn't work -> use index 8??
-                //STRING index = END IS EXCLUSIVE
+                s=military+s.substring(2,8);
+                //must use index 8 not index 7 because STRING index = END IS EXCLUSIVE
                 return s;
             }
         } else{
